@@ -67,4 +67,36 @@ You can customize your model in [`utils.py`](utils.py) file under the `create_mo
 
     Wait until you see `"Please speak"` prompt and start talking, it will stop recording as long as you stop talking.
 
+## Running
+### Using python
+[`recognize.py`](recognize.py) is the code responsible for testing your audio files or your voice:
+python recognize.py --help
+
+**Output:**
+
+    usage: test.py [-h] [-f FILE]
+
+    Gender recognition script, this will load the model you trained, and perform
+    inference on a sample you provide (either using your voice or a file)
+
+    optional arguments:
+    -h, --help            show this help message and exit
+    -f FILE, --file FILE  The path to the file, preferred to be in WAV format
+
+- For instance, to get gender of the file `test-samples/27-124992-0002.wav`, you can:
+
+      python test.py --file "test-samples/27-124992-0002.wav"
+
+    **Output:**
+
+      Result: male
+      Probabilities:     Male: 96.36%    Female: 3.64%
+  
+  There are some audio samples in [test-samples](test-samples) folder for you to test with, it is grabbed from [LibriSpeech dataset](http://www.openslr.org/12).
+- To make inference on your voice instead, you need to:
+      
+      python test.py
+
+    Wait until you see `"Please speak"` prompt and start talking, it will stop recording as long as you stop talking.
+
     

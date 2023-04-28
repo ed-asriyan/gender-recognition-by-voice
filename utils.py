@@ -33,9 +33,6 @@ def load_data(vector_length=128):
     n_male_samples = len(df[df['gender'] == 'male'])
     # get total female samples
     n_female_samples = len(df[df['gender'] == 'female'])
-    print("Total samples:", n_samples)
-    print("Total male samples:", n_male_samples)
-    print("Total female samples:", n_female_samples)
     # initialize an empty array for all audio features
     X = np.zeros((n_samples, vector_length))
     # initialize an empty array for all audio labels (1 for male and 0 for female)
@@ -84,6 +81,4 @@ def create_model(vector_length=128):
     model.add(Dense(1, activation="sigmoid"))
     # using binary crossentropy as it's male/female classification (binary)
     model.compile(loss="binary_crossentropy", metrics=["accuracy"], optimizer="adam")
-    # print summary of the model
-    model.summary()
     return model

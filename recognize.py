@@ -6,7 +6,6 @@ from sys import byteorder
 from array import array
 from struct import pack
 
-
 THRESHOLD = 500
 CHUNK_SIZE = 1024
 FORMAT = pyaudio.paInt16
@@ -174,9 +173,8 @@ if __name__ == "__main__":
     # extract features and reshape it
     features = extract_feature(file, mel=True).reshape(1, -1)
     # predict the gender!
-    male_prob = model.predict(features)[0][0]
+    male_prob = model.predict(features, verbose=0)[0][0]
     female_prob = 1 - male_prob
-    gender = "male" if male_prob > female_prob else "female"
     # show the result!
-    result = "MALE" if male_prob > female_prob else "FEMALE"
-    print("Result:", result)
+    result = "male" if male_prob > female_prob else "female"
+    print(result)
