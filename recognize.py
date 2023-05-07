@@ -5,6 +5,11 @@ from numpy import abs, mean, hstack, array
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense, LSTM, Dropout
 
+__all__ = [
+    "Gender",
+    "Recognizer",
+]
+
 
 def create_model(vector_length=128):
     """5 hidden dense layers from 256 units to 64, not the best model, but not bad."""
@@ -70,6 +75,7 @@ def extract_feature(file_name, **kwargs):
 class Gender(Enum):
     Male = 0
     Female = 1
+
 
 class Recognizer:
     def __init__(self):

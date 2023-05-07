@@ -1,4 +1,4 @@
-FROM python:3.8-buster
+FROM python:3.10-buster
 RUN apt update && apt install -y portaudio19-dev python3-pyaudio libsndfile1-dev
 
 WORKDIR /app
@@ -7,5 +7,6 @@ RUN pip install -r requirements.txt
 
 ADD model.h5 .
 ADD recognize.py .
+ADD worker.py .
 
-ENTRYPOINT ["python", "recognize.py", "--file"]
+CMD python worker.py
